@@ -4,44 +4,64 @@ import cn.tedu.csmall.product.ex.ServiceException;
 import cn.tedu.csmall.product.pojo.param.AlbumAddNewParam;
 import cn.tedu.csmall.product.service.IAlbumService;
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
-import io.swagger.annotations.*;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import javax.validation.Valid;
 
 @RestController
-@Api(tags = "01.相册管理相关接口")
-@RequestMapping(value = "/album", method = RequestMethod.POST)
+@RequestMapping("/album")
+@Api(tags = "04. 相册管理模块")
 @Slf4j
 public class AlbumController {
+
     @Autowired
     private IAlbumService albumService;
-    //    @RequestMapping("/add-new")
-    @PostMapping("/album")
-    @ApiOperation(value = "添加新的相册", notes = "添加新的相册")
-    @ApiOperationSupport(order = 1)
-//    与之相似的注解还有@GetMapping、@PutMapping、@DeleteMapping,@PatchMapping
-    public String addNew(AlbumAddNewParam albumAddNewParam) {
 
-        try {
-            albumService.addNew(albumAddNewParam);
-            return "添加成功";
-        } catch (ServiceException e) {
-            return e.getMessage();
-        } catch (Exception e) {
-            e.printStackTrace();
-            return "添加失败";
-        }
+    // http://localhost:8080/album/add-new
+    @PostMapping("/add-new")
+    @ApiOperation("添加相册")
+    @ApiOperationSupport(order = 100)
+    public String addNew(@Valid AlbumAddNewParam albumAddNewParam) {
+        log.debug("开始处理【添加相册】的请求，参数：{}", albumAddNewParam);
+        albumService.addNew(albumAddNewParam);
+        log.debug("处理【添加相册】的请求，完成！");
+        return "添加成功！";
     }
 
+    // http://localhost:8080/album/delete?id=1
     @PostMapping("/delete")
-    @ApiOperation(value = "删除相册", notes = "删除相册")
+    @ApiOperation("根据ID删除相册")
     @ApiOperationSupport(order = 200)
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "albumId", value = "相册id", required = true, example = "1"),
-            @ApiImplicitParam(name = "userId", value = "用户Id", required = true, example = "1")
+            @ApiImplicitParam(name = "albumId", value = "相册ID", required = true, dataType = "long"),
+            @ApiImplicitParam(name = "userId", value = "用户ID", required = true, dataType = "long")
     })
-    public String delete(Long albumId, Long userId) {
-        throw new RuntimeException("没做呢点什么！！！！！");
+    public String delete(Long albumId, Long userId) throws Exception {
+        "".substring(1000000);
+        return null;
     }
+
+    @PostMapping("/update")
+    @ApiOperation("修改相册")
+    @ApiOperationSupport(order = 300)
+    public String update() {
+        throw new NullPointerException("修改出错了，导致了空指针异常！");
+    }
+
+    @GetMapping("/list")
+    @ApiOperation("查询相册列表")
+    @ApiOperationSupport(order = 300)
+    public String list() {
+        throw new RuntimeException("查询出错了，导致了RuntimeException！");
+    }
+
 }
