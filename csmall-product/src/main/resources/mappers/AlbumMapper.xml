@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.tedu.csmall.product.mapper.AlbumMapper">
+<!--    useGeneratedKeys:获取自动编号属性值 keyProperty：写哪个就会放入到哪个属性值-->
+</mapper>
