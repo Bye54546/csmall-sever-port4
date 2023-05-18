@@ -26,6 +26,7 @@
     <!-- 子级模块项目清单 -->
     <modules>
         <module>csmall-product</module>
+        <module>csmall-passport</module>
     </modules>
 
     <!-- 属性配置 -->
@@ -59,6 +60,12 @@
                 <artifactId>mybatis-plus-boot-starter</artifactId>
                 <version>${mybatis-plus-spring-boot.version}</version>
             </dependency>
+            <!-- 基于MyBatis或MyBatis Plus的分页查询框架 -->
+            <dependency>
+                <groupId>com.github.pagehelper</groupId>
+                <artifactId>pagehelper-spring-boot-starter</artifactId>
+                <version>${pagehelper-spring-boot.version}</version>
+            </dependency>
             <!-- Lombok的依赖项，主要用于简化POJO类的编写 -->
             <dependency>
                 <groupId>org.projectlombok</groupId>
@@ -70,12 +77,6 @@
                 <groupId>com.alibaba</groupId>
                 <artifactId>druid-spring-boot-starter</artifactId>
                 <version>${druid-spring-boot.version}</version>
-            </dependency>
-            <!-- 基于MyBatis或MyBatis Plus的分页查询框架 -->
-            <dependency>
-                <groupId>com.github.pagehelper</groupId>
-                <artifactId>pagehelper-spring-boot-starter</artifactId>
-                <version>${pagehelper-spring-boot.version}</version>
             </dependency>
             <!-- MySQL的依赖项 -->
             <dependency>
