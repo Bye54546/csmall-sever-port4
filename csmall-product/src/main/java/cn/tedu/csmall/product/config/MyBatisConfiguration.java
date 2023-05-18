@@ -5,5 +5,5 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @MapperScan("cn.tedu.csmall.product.mapper")
-public class MybatisConfiguration {
+public class MyBatisConfiguration {
 }

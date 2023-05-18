@@ -4,14 +4,19 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
+import lombok.experimental.Accessors;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+
+/**
+ * 相册的实体类
+ */
 @Data
-//此注解的作用是将此类的所有属性都封装成get/set方法，此外还提供了equals、canEqual、hashCode、toString方法
-//此注解需要在实用类的父类添加无参构造方法
+@Accessors(chain = true)
 @TableName("pms_album")
 public class Album implements Serializable {
+
     @TableId(type = IdType.AUTO)
     private Long id;
     private String name;
